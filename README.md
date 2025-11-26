@@ -1,5 +1,7 @@
-# Ex. No:1b 			Study of Client Server Chat Applications
 
+# Ex. No:1b 			Study of Client Server Chat Applications
+### NAME : Mithun raj .M
+### REG NO : 212223045002
 ## Aim: 
 To perform a study on Client Server Chat Applications
 ## Introduction:
@@ -73,8 +75,53 @@ Client-server chat applications are versatile tools that facilitate real-time co
 
 Client-server chat applications are foundational to real-time communication over networks. They incorporate principles of socket programming, communication protocols, and security mechanisms to provide a seamless user experience. Understanding the basics of client-server chat applications is essential for developers involved in networked application development, as they form the backbone of various collaborative communication systems. As technology evolves, chat applications continue to adapt, incorporating new features and technologies to enhance user interaction and connectivity.
 
+## Program:
+
+CLIENT:
+
+```
+
+import socket
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(("localhost", 9999))
+done=False
+while not done:
+    client.send(input("Message ").encode('utf-8'))
+    msg = client.recv(1024).decode('utf-8')
+    if msg == 'quit':
+        done=True
+    else:
+        print(msg)
+client.close()
+
+```
+
+SERVER:
+
+```
+import socket
+from base64 import decode
+from operator import truediv
+server =socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(('localhost', 9999))
+server.listen()
+client,addr=server.accept()
+done = False
+while not done:
+    msg = client.recv(1024).decode('utf-8')
+    if msg == 'quit':
+        done = True
+    else:
+        print(msg)
+    client.send(input("Message ").encode('utf-8'))
+client.close()
+server.close()
+```
+
+## Output:
+
+<img width="1449" height="811" alt="image" src="https://github.com/user-attachments/assets/7aa376be-9fcd-445c-a670-95f8c67a1f2b" />
 
 ## Result:
 
 Thus the study on Client Server Chat Applications has been performed
-
